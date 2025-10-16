@@ -15,7 +15,7 @@
         1.Defineix una variable amb el preu d'un article i una constant almb el valor de l'IVA vigent. Calcular i mostrar el preu final de l'article en aplicar l'IVA. Arrodonir als cèntims d'euro.
         -->
 
-        <h3>Ejercicio 1</h3>
+        <h3>Ejercicio 10</h3>
         <form action="ACT1.1.php" method="POST">
             <label for="precio">Introduce el precio del articulo:</label>
             <input type="text" name="precio" id="precio">
