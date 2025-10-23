@@ -73,6 +73,12 @@
 4.Escriu un script que generi un enter de 8 dígits, calculi la lletra que li correspon de DNI i mostri pel navegador el resultat de manera llegible.
     -->
 
+    <h3>Ejercicio 4</h3>
+    <?php
+    $numeros = "0123456789";
+    $letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    
+    ?>
         <!--
 5.Implementa un script per a generar els dorsals dels corredors d'una cursa. El format del dorsal és: H, D o X en funció del gènere + les tres primeres lletres del nom (la 1a en majúscula) + les tres primeres lletres del primer cognom (la 1a en majúscula). Inicialitza variables amb els valors que vulguis i mostra pel navegador de el dorsal resultant.
     -->
