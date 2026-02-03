@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestió de Concerts</title>
+    <link rel="stylesheet" href="public/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🎵 Gestió de Concerts</h1>
+    </header>
+
+    <nav>
+      <a href="index.php">Inici</a>
+    </nav>
+
+    <main>
+      <!-- Secció de cerques (Usuari) -->
+      <section class="search-section">
+        <h2>Cercar Concerts</h2>
+
+        <div class="search-forms">
+          <!-- Cerca per grup -->
+          <form action="index.php" method="GET" class="search-form">
+            <h3>Cercar per Grup</h3>
+            <input type="hidden" name="action" value="search_grup" />
+            <label for="grup">Nom del grup:</label>
+            <input
+              type="text"
+              id="grup"
+              name="grup"
+              required
+              placeholder="Escriu el nom del grup..."
+            />
+            <button type="submit">Cercar</button>
+          </form>
+
+          <!-- Cerca per dates -->
+          <form action="index.php" method="GET" class="search-form">
+            <h3>Cercar per Dates</h3>
+            <input type="hidden" name="action" value="search_dates" />
+            <label for="data_inici">Data inici:</label>
+            <input type="date" id="data_inici" name="data_inici" required />
+            <label for="data_fi">Data fi:</label>
+            <input type="date" id="data_fi" name="data_fi" required />
+            <button type="submit">Cercar</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Secció Admin -->
+      <section class="admin-section">
+        <h2>Administració de Concerts</h2>
+
+        <div class="admin-forms">
+          <!-- Afegir concert -->
+          <form action="index.php" method="POST" class="admin-form">
+            <h3>Afegir Concert</h3>
+            <input type="hidden" name="action" value="add" />
+
+            <label for="add_grup">Grup:</label>
+            <input type="text" id="add_grup" name="grup" required />
+
+            <label for="add_ciutat">Ciutat:</label>
+            <input type="text" id="add_ciutat" name="ciutat" required />
+
+            <label for="add_sala">Sala:</label>
+            <input type="text" id="add_sala" name="sala" required />
+
+            <label for="add_data">Data:</label>
+            <input type="date" id="add_data" name="data" required />
+
+            <label for="add_hora">Hora:</label>
+            <input type="time" id="add_hora" name="hora" required />
+
+            <button type="submit">Afegir Concert</button>
+          </form>
+
+          <!-- Modificar sala -->
+          <form action="index.php" method="POST" class="admin-form">
+            <h3>Modificar Sala del Concert</h3>
+            <input type="hidden" name="action" value="update" />
+
+            <label for="mod_id">ID del Concert:</label>
+            <input
+              type="number"
+              id="mod_id"
+              name="id_concert"
+              required
+              min="1"
+            />
+
+            <label for="mod_sala">Nova Sala:</label>
+            <input type="text" id="mod_sala" name="sala" required />
+
+            <button type="submit">Modificar Sala</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Missatge -->
+      {{MESSAGE}}
+
+      <!-- Llista de concerts -->
+      <section class="concerts-list">
+        <h2>{{TITLE}}</h2>
+        {{CONCERTS}}
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Gestió de Concerts - Aplicació MVC</p>
+    </footer>
+  </body>
+</html>
