@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CategoriaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestro un listado con todos los registros
      */
     public function index()
     {
@@ -17,50 +17,69 @@ class CategoriaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra formulario para crear un nuevo registro
      */
     public function create()
     {
-        //
+        $categories = Categoria::all();
+        return view('categories.create', compact('categories'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guarda un nuevo registro
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required',
+        ]);
+
+        Categoria::create($request->all());
+
+        return redirect()->route('categories.index');
     }
 
     /**
-     * Display the specified resource.
+     * Muestro un registro en específico
      */
     public function show(string $id)
     {
-        //
+        $categoria = Categoria::with('tasques')->findOrFail($id);
+
+        return view('categories.show', compact('categoria'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra formulario para editar
      */
     public function edit(string $id)
     {
-        //
+        $categories = Categoria::findOrFail($id);
+        return view('categories.edit', compact('categories'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza registro
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nom' => 'required',
+        ]);
+
+        $categories = Categoria::findOrFail($id);
+        $categories->update($request->all());
+
+        return redirect()->route('categories.index');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina registro
      */
     public function destroy(string $id)
     {
-        //
+        $categories = Categoria::findOrFail(($id));
+        $categories->delete();
+        return redirect()->route('categories.index');
     }
 }

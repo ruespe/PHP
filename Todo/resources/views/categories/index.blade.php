@@ -4,7 +4,7 @@
 
 @section('content')
 
-<a href="{{ route('categoria.create') }}">Nova categoria</a>
+<a href="{{ route('categories.create') }}">Nova categoria</a>
 
 <ul>
 @foreach ($categories as $categoria)
@@ -12,14 +12,14 @@
         <strong>{{ $categoria->nom }}</strong>
         ({{ $categoria->descripcio }})
 
-        <!-- <a href="{{ route('categoria.show', $tasca) }}">Veure</a>
-        <a href="{{ route('categoria.edit', $tasca) }}">Editar</a> -->
+        <a href="{{ route('categories.show', $categoria) }}">Veure</a>
+        <a href="{{ route('categories.edit', $categoria) }}">Editar<a>
 
-        <!-- <form action="{{ route('categoria.destroy', $tasca) }}" method="POST" style="display:inline">
+     <form action="{{ route('categories.destroy', $categoria) }}" method="POST" style="display:inline">
             @csrf
             @method('DELETE')
             <button type="submit">Eliminar</button>
-        </form> -->
+        </form>
     </li>
 @endforeach
 </ul>
