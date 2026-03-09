@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('valor');
+            $table->enum('premis'[ premis: 'ratolí', 'cotxe', 'viatge', 'dinar', 'massatge']);
             $table->timestamps();
         });
     }
