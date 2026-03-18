@@ -6,7 +6,29 @@ A cada connexió hauràs de comprovar si existeix la galeta corresponent per sal
 
 A més, afegeix un camp que permeti a l’usuari comunicar que vol esborrar la cookie. En aquest cas s'haurà d’eliminar.
  -->
+<?php 
+if(isset($_POST['borrar'])){
+   setcookie("usuario", "", time() - 3600);
+   header("Location: " . $_SERVER["PHP_SELF"]);
+   exit();
+}
 
+if(isset($_POST['nombre']) && !empty($_POST['nombre'])){
+   $valor = $_POST['nombre'];
+   $valor = trim($valor);
+   $valor = filter_var($valor, FILTER_SANITIZE_SPECIAL_CHARS);
+   $valor = htmlspecialchars($valor);
+
+   setcookie("usuario", $valor, time() + 3600);
+   header("Location: " . $_SERVER["PHP_SELF"]);
+   exit();
+}
+
+$mensaje = "Bienvenido, por favor ingresa tu nombre:";
+if(isset($_COOKIE["usuario"])){
+   $mensaje = "Bienvenido de nuevo, " . $_COOKIE["usuario"] . "!";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,31 +43,10 @@ A més, afegeix un camp que permeti a l’usuari comunicar que vol esborrar la c
       <input type="text" name="nombre">
       <button type="submit">Submit</button>
       <button name="borrar" type="submit">Eliminar cookie</button>
-      <?php
-         if(isset($mensaje)){
-            echo $mensaje;
-         } else{
-            echo "Bienvenido de nuevo, ";
-         }
-      ?>
    </form>
+   <?php 
+   echo $mensaje;
+   ?>
 </body>
 
 </html>
-
-<?php
-   $cookie_name = "usuario";
-
-   if(isset($_POST['borrar'])){
-      setcookie($cookie_name, "",time() - 3600);
-      $mensaje = "Cookie borrada, vuelve a poner tu nombre";
-   }
-
-   elseif(isset($_POST['nombre'])){
-      $nombre = $_POST['nombre'];
-      $nombre = trim($nombre);
-      $nombre = htmlspecialchars($nombre);
-      setcookie($cookie_name,$nombre, time() + 3600);
-      $mensaje = "Bienvenido, $nombre";
-   }
-?>
