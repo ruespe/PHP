@@ -9,7 +9,7 @@ Processar el formulari serà calcular l'edat del usuari i mostrar-li d'aquesta m
 
 if (isset($_GET['nombre'])){
 $nombre = $_GET['nombre'];
-$dia = $_GET['dia'];+
+$dia = $_GET['dia'];
 $mes = $_GET['mes'];
 $año = $_GET['año'];
 

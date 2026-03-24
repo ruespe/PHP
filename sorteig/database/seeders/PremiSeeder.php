@@ -13,11 +13,12 @@ class PremiSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 1; $i <= 10; $i++){
-            DB::table('premis')->insert([
-                'nom' => 'Premio' . $i,
-                'valor' => rand(10, 9999)
-            ]);
-        };
+        DB::table('premis')->insert([
+            ['nom' => 'Ratolí', 'valor' => '20€', 'premis' => 'ratolí', 'created_at' => now(), 'updated_at' => now()],
+            ['nom' => 'Cotxe', 'valor' => '20000€', 'premis' => 'cotxe', 'created_at' => now(), 'updated_at' => now()],
+            ['nom' => 'Viatge', 'valor' => '1000€', 'premis' => 'viatge', 'created_at' => now(), 'updated_at' => now()],
+            ['nom' => 'Dinar', 'valor' => '50€', 'premis' => 'dinar', 'created_at' => now(), 'updated_at' => now()],
+            ['nom' => 'Massatge', 'valor' => '30€', 'premis' => 'massatge', 'created_at' => now(), 'updated_at' => now()],
+        ]);
     }
 }

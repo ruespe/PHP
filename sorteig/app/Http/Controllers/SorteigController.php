@@ -3,23 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Persona;
+use App\Models\Premi;
 use Illuminate\Http\Request;
 
 class SorteigController extends Controller
 {
     public function index()
     {
-        // 1. Recuperar el dni de totes les persones
-        $persones = Persona::select('dni')->get();
+        // 2.1 Recuperar els premis emmagatzemats en la taula
+        $premis = Premi::all();
 
-        // 2. Assignar un número aleatori a cada persona
-        $personesAlea = $persones->map(function ($persona) {
-            $persona->nombre = rand(1, 100);
+        // Recuperar totes les persones
+        $persones = Persona::all();
+
+        // 2.2 Assignar aleatòriament un premi a cada persona
+        $resultat = $persones->map(function ($persona) use ($premis) {
+            $persona->premi = $premis->random();
             return $persona;
         });
-        // 3. Enviar les dades a la vista
-        return view('sorteig', [
-            'persones' => $personesAlea
-        ]);
+
+        return view('sorteig', ['persones' => $resultat]);
+    }
+
+    // Punt 4: Mostrar tots els premis
+    public function premis()
+    {
+        $premis = Premi::all();
+        return view('premis', ['premis' => $premis]);
     }
 }

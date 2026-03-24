@@ -2,10 +2,10 @@
 <html lang="ca">
 <head>
     <meta charset="UTF-8">
-    <title>Resultat del Sorteig</title>
+    <title>Participants</title>
 </head>
 <body>
-    <h1>Resultat del Sorteig</h1>
+    <h1>Llistat de Participants</h1>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
             <tr>
@@ -13,8 +13,8 @@
                 <th>Nom</th>
                 <th>Cognom 1</th>
                 <th>Cognom 2</th>
-                <th>Premi assignat</th>
-                <th>Valor</th>
+                <th>Telèfon</th>
+                <th>Correu</th>
             </tr>
         </thead>
         <tbody>
@@ -24,8 +24,8 @@
                 <td>{{ $persona->nom }}</td>
                 <td>{{ $persona->cognom1 }}</td>
                 <td>{{ $persona->cognom2 }}</td>
-                <td>{{ $persona->premi->nom }}</td>
-                <td>{{ $persona->premi->valor }}</td>
+                <td>{{ $persona->telefon }}</td>
+                <td>{{ $persona->correu }}</td>
             </tr>
             @endforeach
         </tbody>

@@ -2,10 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SorteigController;
-
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\ParticipantsController;
 
 Route::get('/', [SorteigController::class, 'index']);
+Route::get('/premis', [SorteigController::class, 'premis']);
+Route::get('/participants', [ParticipantsController::class, 'index']);
 
