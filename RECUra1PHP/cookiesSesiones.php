@@ -6,7 +6,11 @@ A cada connexió hauràs de comprovar si existeix la galeta corresponent per sal
 
 A més, afegeix un camp que permeti a l’usuari comunicar que vol esborrar la cookie. En aquest cas s'haurà d’eliminar.
  -->
+<<<<<<< HEAD
 <?php 
+=======
+<?php
+>>>>>>> 766edfa396a92e887f5cce7cecf022b19b9030ff
 if(isset($_POST['borrar'])){
    setcookie("usuario", "", time() - 3600);
    header("Location: " . $_SERVER["PHP_SELF"]);
@@ -44,9 +48,17 @@ if(isset($_COOKIE["usuario"])){
       <button type="submit">Submit</button>
       <button name="borrar" type="submit">Eliminar cookie</button>
    </form>
+<<<<<<< HEAD
    <?php 
+=======
+   <?php
+>>>>>>> 766edfa396a92e887f5cce7cecf022b19b9030ff
    echo $mensaje;
    ?>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 766edfa396a92e887f5cce7cecf022b19b9030ff
