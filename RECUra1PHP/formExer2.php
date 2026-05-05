@@ -35,7 +35,6 @@
             <option value="ordinador">Ordinador a bord</option>
         </select>
         <br>
-        <br>
         <button type="submit">Envia</button>
         <button type="reset">Inicializa</button>
     </form>
