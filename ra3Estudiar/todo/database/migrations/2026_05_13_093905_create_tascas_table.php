@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tascas', function (Blueprint $table) {
+        Schema::create('tasques', function (Blueprint $table) {
             $table->id();
+            $table->string('titol');
+            $table->text('descripcio')->nullable();
+            $table->enum('prioritat', ['baixa', 'mitjana', 'alta'])->default('mitjana');
+            $table->enum('stat', ['pendent', 'en_curs', 'completada'])->default('pendent');
+            $table->foreignId('categoria_id')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tascas');
+        Schema::dropIfExists('tasques');
     }
 };

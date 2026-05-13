@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\CategoriaController;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -13,7 +12,7 @@ class Tasca extends Model
         'titol',
         'descripcio',
         'prioritat',
-        'estat',
+        'stat',
         'categoria_id'
     ];
     public function categoria(){
