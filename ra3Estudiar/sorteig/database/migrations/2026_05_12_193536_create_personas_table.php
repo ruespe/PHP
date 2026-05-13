@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('cognom2')->nullable(); 
             $table->string('telefon')->nullable(); 
             $table->string('correu')->unique(); 
+            $table->string('premi')->nullable();
             $table->timestamps();
         });
     }

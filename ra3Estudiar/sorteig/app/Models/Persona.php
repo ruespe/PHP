@@ -18,6 +18,7 @@ class Persona extends Model
         'cognom1',
         'cognom2',
         'telefon',
-        'correu'
+        'correu',
+        'premi'
     ];
 }

@@ -13,27 +13,7 @@ class SorteigController extends Controller
      */
     public function index()
     {
-        $persones = Persona::all();
-        $premis = Premi::all();
-        $persones->map(function ($persona) use ($premis) {
-
-            $persona->premi_assignat = $premis->random()->nom;
-            return $persona;
-        });
-
-        return view('sorteig', compact('persones'));
-    }
-
-    // Nou mètode per a la part 4
-    public function llistarPremis()
-    {
-        // Recuperem tots els premis per mostrar-los en una llista simple
-        $premis = Premi::all();
-
-        // Retornem una vista nova (hauràs de crear el fitxer premis.blade.php)
-        return view('premis', compact('premis'));
-    }
-
+        // PART 1
         // 1. Obtenir totes les dades del model Persona des de la base de dades
         // Es guarda tot en una col·lecció (una mena d'array de Laravel) anomenada $persones
         // $persones = Persona::all();
@@ -52,6 +32,50 @@ class SorteigController extends Controller
         // 3. Carreguem la vista 'sorteig.blade.php' enviant les dades
         // El segon paràmetre ['persones' => $persones] crea la variable $persones a la vista
         //return view('sorteig', ['persones' => $persones]);
+   
+        // PART 2
+    //     $persones = Persona::all();
+    //     $premis = Premi::all();
+    //     $persones->map(function ($persona) use ($premis) {
+
+    //         $persona->premi_assignat = $premis->random()->nom;
+    //         return $persona;
+    //     });
+
+    //     return view('sorteig', compact('persones'));
+
+    // 1. Recuperem les persones i els premis
+    $persones = Persona::all();
+    $premis = Premi::all();
+
+    // 2. Si no hi ha premis, millor avisar o sortir
+    if ($premis->isEmpty()) {
+        return "No hi ha premis a la base de dades!";
+    }
+
+    // 3. Assignar, guardar a la BD i preparar per a la vista
+    foreach ($persones as $persona) {
+        // Escollim un premi aleatori
+        $premiAleatori = $premis->random()->nom;
+
+        // guardem a la base de dades
+        $persona->premi = $premiAleatori;
+        $persona->save(); 
+    }
+
+    // 4. Enviem les persones (ara ja tenen el premi guardat a la BD)
+    return view('sorteig', compact('persones'));
+    }
+
+    // Nou mètode per a la part 4
+    public function llistarPremis()
+    {
+        // Recuperem tots els premis per mostrar-los en una llista simple
+        $premis = Premi::all();
+
+        // Retornem una vista nova (hauràs de crear el fitxer premis.blade.php)
+        return view('premis', compact('premis'));
+    }
 
 
     /**

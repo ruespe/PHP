@@ -9,15 +9,26 @@
 
     <body>
         <h1>Persones amb número aleatori</h1>
-        @foreach ($persones as $person)
-        <tr>
-            <td>{{ $person->dni }}</td>
-            <td>{{ $person->nom }}</td>
-            <td>{{ $person->aleatori }}</td>
-            <td>{{$person->premi_assignat}}</td>
-            <br>
-        </tr>
-        @endforeach
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom Complet</th>
+                    <th>DNI</th>
+                    <th>Premi Guanyat</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($persones as $persona)
+                <tr>
+                    <td>{{ $persona->nom }} {{ $persona->cognom1 }}</td>
+                    <td>{{ $persona->dni }}</td>
+                    <td>
+                        <strong>{{ $persona->premi ?? 'Sense sortejar' }}</strong>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </body>
 
     </html>
