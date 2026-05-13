@@ -22,7 +22,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        // Crida al seeder de persones
-        $this->call(PersonaSeeder::class);
+        // Utilitzem el mètode call per cridar als altres seeders
+        $this->call([
+            PersonaSeeder::class,
+            PremiSeeder::class,
+        ]);
     }
 }

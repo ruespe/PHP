@@ -14,6 +14,7 @@
             <td>{{ $person->dni }}</td>
             <td>{{ $person->nom }}</td>
             <td>{{ $person->aleatori }}</td>
+            <td>{{$person->premi_assignat}}</td>
             <br>
         </tr>
         @endforeach

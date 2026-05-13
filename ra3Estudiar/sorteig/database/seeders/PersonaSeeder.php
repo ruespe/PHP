@@ -14,7 +14,7 @@ class PersonaSeeder extends Seeder
     public function run(): void
     {
         // Crea 5 persones de prova
-        \App\Models\Persona::factory()->count(5)->create();
+        Persona::factory()->count(5)->create();
 
         //     \App\Models\Persona::create([
         //     'dni'      => '12345678A',
