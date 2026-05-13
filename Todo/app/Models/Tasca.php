@@ -15,11 +15,15 @@ class Tasca extends Model
         'status',
         'categoria_id',
     ];
-        public function categoria()
+    public function categoria()
 
     {
 
         return $this->belongsTo(Categoria::class);
     }
 
+    public function treballadors()
+    {
+        return $this->belongsToMany(Treballador::class, 'tasca_treballador', 'tasca_id', 'treballador_dni');
+    }
 }

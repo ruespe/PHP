@@ -18,4 +18,8 @@ class Treballador extends Model
         'correu',
         'telefon'
     ];
+    public function tasques()
+    {
+        return $this->belongsToMany(Tasca::class, 'tasca_treballador', 'treballador_dni', 'tasca_id');
+    }
 }
